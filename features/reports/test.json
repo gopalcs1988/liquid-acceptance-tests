@@ -1,0 +1,155 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "test-the-login-feature-of-the-liquid-application;to-access-the-google-search-page",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "To access the google search page",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 687947041
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "Access the login page with the URL of \"http://localhost:2000\"",
+            "match": {
+              "location": "features/steps/loginPage.js:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 762464500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 5,
+            "name": "Check that user is able to access the login page",
+            "match": {
+              "location": "features/steps/loginPage.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 226524707
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "Enter the username as \"rajagopal\"",
+            "match": {
+              "location": "features/steps/loginPage.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 142063791
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "Enter the password as \"password\"",
+            "match": {
+              "location": "features/steps/loginPage.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 75079375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "Click on the login button",
+            "match": {
+              "location": "features/steps/loginPage.js:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 48525499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "Check that the consent page is displayed",
+            "match": {
+              "location": "features/steps/consentPage.js:4"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 5002435582,
+              "error_message": "Error: function timed out, ensure the promise resolves within 5000 milliseconds\n    at Timeout.<anonymous> (/Users/rarumuga/Documents/MyProjects/JS-Selenium/node_modules/@cucumber/cucumber/lib/time.js:54:20)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "Click on the consent button",
+            "match": {
+              "location": "features/steps/consentPage.js:8"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "Check that agent is able to view the status as UP on the redirect page",
+            "match": {
+              "location": "features/steps/loginPage.js:26"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 57430208
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "test-the-login-feature-of-the-liquid-application",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Test the login feature of the liquid application",
+    "tags": [
+      {
+        "name": "@login",
+        "line": 1
+      }
+    ],
+    "uri": "features/login.feature"
+  }
+]

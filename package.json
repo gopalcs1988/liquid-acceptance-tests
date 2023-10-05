@@ -1,0 +1,20 @@
+{
+  "name": "js-selenium",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --format json:./features/reports/test.json ; gulp CucumberReports"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cucumber/cucumber": "^9.5.1",
+    "chromedriver": "^116.0.0",
+    "cucumber-html-reporter": "^7.1.1",
+    "selenium-webdriver": "4.1.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
