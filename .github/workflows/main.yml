@@ -12,3 +12,7 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
+
+    - name: Downlaod Liquid Repository
+      run: |
+        git clone https://github.com/shrihari-prakash/liquid.git
