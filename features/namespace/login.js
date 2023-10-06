@@ -28,10 +28,5 @@ class Login {
     async clickLoginButton() {
         await this.core.click(TargetType.xpath, "//input[@class='button' and @value='Login']")
     }
-
-    async checkHomePage() {
-        //await driver.sleep(10000)
-        await this.core.checkElementVisible(TargetType.xpath,"//div[@class='cm-scroller']//span[contains(text(),'UP')]")
-    }
 }
 module.exports = Login

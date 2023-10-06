@@ -1,11 +1,23 @@
 var { After, Before, AfterAll, Status } = require("@cucumber/cucumber");
 const { initDriver } = require("../utils/driverUtil");
 var reporter = require('cucumber-html-reporter');
+const fs = require("fs");
+const path = require("path");
 let driver;
+const directory = "./features/screenshots/";
 
 
 Before(async function () {
   driver = await initDriver();
+  fs.readdir(directory, (err, files) => {
+    if (err) throw err;
+  
+    for (const file of files) {
+      fs.unlink(path.join(directory, file), (err) => {
+        if (err) throw err;
+      });
+    }
+  });
 });
 
 After(async function (scenario) {

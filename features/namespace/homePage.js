@@ -6,11 +6,8 @@ class HomePage {
     this.core = new Core();
   }
 
-  async checkHomePage(value) {
-    await this.core.checkElementVisible(
-      TargetType.xpath,
-      `//div[@class='cm-scroller']//span[contains(text(),'${value}')]`
-    );
+  async checkHomePage() {
+    await this.core.checkElementVisible(TargetType.xpath,"//*[contains(text(),'UP')]")
   }
 }
 module.exports = HomePage

@@ -8,5 +8,5 @@ And Enter the password as "password"
 And Click on the login button
 Then Check that the consent page is displayed
 And Click on the consent button
-Then Check that agent is able to view the status as UP on the redirect page
+Then Check that agent is able to view the status as "UP" on the redirect page
 

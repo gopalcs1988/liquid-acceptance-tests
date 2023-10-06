@@ -22,7 +22,3 @@ When('Enter the password as {string}', async function (string) {
 When('Click on the login button', async function () {
   await base.login.clickLoginButton()
 });
-
-Then('Check that agent is able to view the status as UP on the redirect page', async function () {
-  await base.login.checkHomePage()
-});
