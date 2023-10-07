@@ -18,6 +18,4 @@ jobs:
     - name: Download Liquid Repository
       run: |
         git clone https://github.com/shrihari-prakash/liquid.git
-        cd ./liquid/quickstart
-        docker-compose pull
-        docker-compose up
+        echo "Current Working Directory: $PWD"
