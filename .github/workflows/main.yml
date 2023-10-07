@@ -18,7 +18,11 @@ jobs:
         echo "Current Working Directory: $PWD"
         ls -l
         cd liquid/quickstart
-        ls -l
         docker compose pull
         docker compose up -d
         docker ps -a
+        cd ..
+        cd scripts
+        ls -l
+        node create-application-client.js mongodbConenctionString=mongodb://liquid_mongodb:27017/liquid clientSecret=Liquid redirectUrls=http://localhost:2000/health
+        
