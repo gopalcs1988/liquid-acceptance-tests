@@ -1,9 +1,10 @@
 name: Acceptance Tests
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+  #push:
+    #branches:
+     # - main
 
 jobs:
   download-repo:
@@ -23,7 +24,7 @@ jobs:
         docker ps -a
         cd ..
         npm install
-        cd scripts
+        #cd scripts
         ls -l
-        node create-application-client.js mongodbConenctionString=mongodb://liquid_mongodb:27017/liquid clientSecret=Liquid redirectUrls=http://localhost:2000/health
+        node ./scripts/create-application-client.js mongodbConenctionString=mongodb://localhost:27017/liquid clientSecret=Liquid redirectUrls=http://localhost:2000/health
         
