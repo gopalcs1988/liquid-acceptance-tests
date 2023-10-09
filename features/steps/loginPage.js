@@ -4,10 +4,10 @@ const base =  new (require("../namespace/base"));
 
 Given("Access the login page with the URL of {string}", async function (string) {
   console.log("The URL value is ", string);
-  await base.login.LoginPage(string)
+  await base.login.loginPage(string)
 });
 
-Given('Check that user is able to access the login page', async function () {
+Given('Checks that user is able to access the login page', async function () {
   await base.login.checkLoginPageIsLoaded()
 });
 

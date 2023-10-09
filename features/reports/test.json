@@ -4,122 +4,147 @@
     "elements": [
       {
         "description": "",
-        "id": "test-the-login-feature-of-the-liquid-application;to-access-the-google-search-page",
-        "keyword": "Scenario",
-        "line": 3,
-        "name": "To access the google search page",
+        "id": "check-the-user-registration-flow;user-registartion",
+        "keyword": "Scenario Outline",
+        "line": 18,
+        "name": "User registartion",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 687947041
+              "duration": 768390332
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 4,
+            "line": 5,
             "name": "Access the login page with the URL of \"http://localhost:2000\"",
             "match": {
               "location": "features/steps/loginPage.js:5"
             },
             "result": {
               "status": "passed",
-              "duration": 762464500
+              "duration": 827435790
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 5,
-            "name": "Check that user is able to access the login page",
+            "line": 6,
+            "name": "Checks that user is able to access the login page",
             "match": {
               "location": "features/steps/loginPage.js:10"
             },
             "result": {
               "status": "passed",
-              "duration": 226524707
+              "duration": 227907917
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 6,
-            "name": "Enter the username as \"rajagopal\"",
-            "match": {
-              "location": "features/steps/loginPage.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 142063791
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
             "line": 7,
-            "name": "Enter the password as \"password\"",
+            "name": "User clicks on create account link",
             "match": {
-              "location": "features/steps/loginPage.js:18"
+              "location": "features/steps/registerPage.js:5"
             },
             "result": {
               "status": "passed",
-              "duration": 75079375
+              "duration": 163121749
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 8,
-            "name": "Click on the login button",
+            "name": "Checks that user is landed on the \"Sign up\" page",
             "match": {
-              "location": "features/steps/loginPage.js:22"
+              "location": "features/steps/registerPage.js:9"
             },
             "result": {
               "status": "passed",
-              "duration": 48525499
+              "duration": 229362665
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 9,
-            "name": "Check that the consent page is displayed",
+            "name": "Enters the \"rajagopal\" in username field on the registartion page",
             "match": {
-              "location": "features/steps/consentPage.js:4"
+              "location": "features/steps/registerPage.js:13"
             },
             "result": {
-              "status": "failed",
-              "duration": 5002435582,
-              "error_message": "Error: function timed out, ensure the promise resolves within 5000 milliseconds\n    at Timeout.<anonymous> (/Users/rarumuga/Documents/MyProjects/JS-Selenium/node_modules/@cucumber/cucumber/lib/time.js:54:20)\n    at listOnTimeout (node:internal/timers:559:17)\n    at processTimers (node:internal/timers:502:7)"
+              "status": "passed",
+              "duration": 139082249
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 10,
-            "name": "Click on the consent button",
+            "name": "Enters the \"raja\" in firstname field on the registartion page",
             "match": {
-              "location": "features/steps/consentPage.js:8"
+              "location": "features/steps/registerPage.js:17"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 66718957
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "Enters the \"gopal\" in lastname field on the registartion page",
+            "match": {
+              "location": "features/steps/registerPage.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 65077666
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "Enters the \"rajagopal1988@gmail.com\" in email field on the registartion page",
+            "match": {
+              "location": "features/steps/registerPage.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 74239624
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "Enters the \"password\" in password field on the registartion page",
+            "match": {
+              "location": "features/steps/registerPage.js:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 66392625
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 11,
-            "name": "Check that agent is able to view the status as UP on the redirect page",
+            "line": 14,
+            "name": "Clicks the create account button",
             "match": {
-              "location": "features/steps/loginPage.js:26"
+              "location": "features/steps/registerPage.js:33"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 50410915
             }
           },
           {
@@ -127,29 +152,139 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 57430208
+              "duration": 56303625
             }
           }
         ],
         "tags": [
           {
-            "name": "@login",
+            "name": "@registration",
+            "line": 1
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "check-the-user-registration-flow;check-the-login-workflow",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "Check the login workflow",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 651845041
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 21,
+            "name": "Access the login page with the URL of \"http://localhost:2000\"",
+            "match": {
+              "location": "features/steps/loginPage.js:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 857390249
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "Checks that user is able to access the login page",
+            "match": {
+              "location": "features/steps/loginPage.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 226187291
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 23,
+            "name": "Enter the username as \"rajagopal\"",
+            "match": {
+              "location": "features/steps/loginPage.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 142579042
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "Enter the password as \"password\"",
+            "match": {
+              "location": "features/steps/loginPage.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 70396540
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "Click on the login button",
+            "match": {
+              "location": "features/steps/loginPage.js:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 48843125
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 28,
+            "name": "Check that agent is able to view the status as \"UP\" on the redirect page",
+            "match": {
+              "location": "features/steps/homePage.js:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 261025499
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 55913875
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@registration",
             "line": 1
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "test-the-login-feature-of-the-liquid-application",
+    "id": "check-the-user-registration-flow",
     "line": 2,
     "keyword": "Feature",
-    "name": "Test the login feature of the liquid application",
+    "name": "Check the user registration flow",
     "tags": [
       {
-        "name": "@login",
+        "name": "@registration",
         "line": 1
       }
     ],
-    "uri": "features/login.feature"
+    "uri": "features/register.feature"
   }
 ]

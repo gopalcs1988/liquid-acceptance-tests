@@ -5,7 +5,7 @@ class Login {
     constructor() {
         this.core = new Core()
     }
-    async LoginPage(url) {
+    async loginPage(url) {
         await this.core.openUrl(url)
     }
 
