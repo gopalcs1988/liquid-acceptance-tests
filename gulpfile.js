@@ -11,6 +11,6 @@ var options = {
     storeScreenshots: true,
     failedSummaryReport: true
 };
-gulp.task('CucumberReports', function () {
+gulp.task('CucumberReports', async function () {
     reporter.generate(options);
 })
