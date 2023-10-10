@@ -30,4 +30,9 @@ jobs:
         cd ..
         npm install
         npm test
+    - name: Output the result
+      uses: actions/upload-artifact@v3
+      with:
+          name: Reports
+          path: ./features/reports
         
