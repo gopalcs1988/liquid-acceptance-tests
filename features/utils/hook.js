@@ -4,8 +4,7 @@ var reporter = require('cucumber-html-reporter');
 const fs = require("fs");
 const path = require("path");
 let driver;
-const directory = "./features/screenshots/";
-
+const directory = path.join(__dirname, "../screenshots/");
 
 Before(async function () {
   driver = await initDriver();
