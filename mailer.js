@@ -23,11 +23,11 @@ async function mailer() {
       attachments: [
         {
         filename: 'cucumber_report.html',
-        path: path1.join(__dirname, "../reports/cucumber_report.html")
+        path: path1.join(__dirname, "./features/reports/cucumber_report.html")
         },
         {
         filename: 'test.json',
-        path: path1.join(__dirname, "../reports/test.json")
+        path: path1.join(__dirname, "./features/reports/test.json")
         }
       ]
       // You can add HTML content as well
