@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 const path1 = require("path");
-//const directory = path1.join(__dirname, "../reports/");
+const dotenv = require('dotenv')
+dotenv.config();
 
 async function mailer() {
   try {
@@ -16,7 +17,7 @@ async function mailer() {
     // Message configuration
     const message = {
       from: process.env.MAIL_USERNAME,
-      to: 'rajagopal1988@gmail.com',
+      to: process.env.MAIL_USERNAME,
       subject: 'Test Email from GitHub Actions',
       text: 'This is a test email sent from a GitHub Actions workflow using nodemailer.',
       html: "<b> Test Email </b>", 
