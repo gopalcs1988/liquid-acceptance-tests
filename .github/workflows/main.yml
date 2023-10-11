@@ -23,8 +23,9 @@ jobs:
         docker compose up -d
         docker ps -a
         cd ..
+    - name: Run Test
+      run: |
         npm install
-        #cd scripts
         ls -l
         node ./scripts/create-application-client.js mongodbConenctionString=mongodb://localhost:27017/liquid clientSecret=Liquid redirectUrls=http://localhost:2000/health
         cd ..
