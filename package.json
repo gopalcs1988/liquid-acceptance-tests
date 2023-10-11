@@ -12,6 +12,7 @@
     "@cucumber/cucumber": "^9.5.1",
     "chromedriver": "^116.0.0",
     "cucumber-html-reporter": "^7.1.1",
+    "nodemailer": "^6.9.6",
     "selenium-webdriver": "4.1.1"
   },
   "devDependencies": {
