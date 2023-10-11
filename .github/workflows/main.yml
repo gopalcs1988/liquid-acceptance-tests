@@ -27,7 +27,7 @@ jobs:
       run: |
         npm install
         ls -l
-        node ./scripts/create-application-client.js mongodbConenctionString=mongodb://localhost:27017/liquid clientSecret=Liquid redirectUrls=http://localhost:2000/health
+        node ./liquid/scripts/create-application-client.js mongodbConenctionString=mongodb://localhost:27017/liquid clientSecret=Liquid redirectUrls=http://localhost:2000/health
         cd ..
         npm install
         npm test
