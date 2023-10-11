@@ -8,14 +8,14 @@ async function mailer() {
     const transporter = nodemailer.createTransport({
       service: 'gmail', // e.g., 'gmail'
       auth: {
-        user: 'process.env.MAIL_USERNAME',
-        pass: 'process.env.MAIL_PASSWORD'
+        user: process.env.MAIL_USERNAME,
+        pass: process.env.MAIL_PASSWORD
       }
     });
 
     // Message configuration
     const message = {
-      from: 'process.env.MAIL_USERNAME',
+      from: process.env.MAIL_USERNAME,
       to: 'rajagopal1988@gmail.com',
       subject: 'Test Email from GitHub Actions',
       text: 'This is a test email sent from a GitHub Actions workflow using nodemailer.',
