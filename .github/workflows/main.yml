@@ -32,7 +32,7 @@ jobs:
         npm test
     - name: Send Email
       run: |
-        node ./features/utils/mailer.js
+        node ./mailer.js
         env:
           MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
