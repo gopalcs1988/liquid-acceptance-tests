@@ -20,10 +20,16 @@ async function mailer() {
       subject: 'Test Email from GitHub Actions',
       text: 'This is a test email sent from a GitHub Actions workflow using nodemailer.',
       html: "<b> Test Email </b>", 
-      attachments: [{
+      attachments: [
+        {
         filename: 'cucumber_report.html',
         path: path1.join(__dirname, "../reports/cucumber_report.html")
-    }]
+        },
+        {
+        filename: 'test.json',
+        path: path1.join(__dirname, "../reports/test.json")
+        }
+      ]
       // You can add HTML content as well
       // html: '<p>This is a <b>test</b> email.</p>',
     };
