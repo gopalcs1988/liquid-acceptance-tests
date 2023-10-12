@@ -37,10 +37,6 @@ jobs:
         touch .env
         echo MAIL_USERNAME=$MAIL_USERNAME >> .env
         echo MAIL_PASSWORD=$MAIL_PASSWORD >> .env
-        ls -a
-        cat .env
-        echo $MAIL_USERNAME
-        echo $MAIL_PASSWORD
         node ./mailer.js
       env:
         MAIL_USERNAME: ${{ secrets.USERNAME }}
