@@ -35,9 +35,9 @@ jobs:
     - name: Send Email
       run: |
         node ./mailer.js
-        env:
-          MAIL_USERNAME: ${{ secrets.USERNAME }}
-          MAIL_PASSWORD: ${{ secrets.PASSWORD }}
+      env:
+        MAIL_USERNAME: ${{ secrets.USERNAME }}
+        MAIL_PASSWORD: ${{ secrets.PASSWORD }}
     - name: Output the result
       uses: actions/upload-artifact@v3
       with:
