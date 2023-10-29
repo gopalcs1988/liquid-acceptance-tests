@@ -23,7 +23,6 @@ After(async function (scenario) {
   var world = this
   try {
     if (driver) {
-
       console.log("After")
       if (scenario.result.status === Status.FAILED) {
         console.log("Snapshot")
