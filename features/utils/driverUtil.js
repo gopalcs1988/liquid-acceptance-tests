@@ -7,7 +7,7 @@ let opts = new chrome.Options();
 exports.initDriver = async () => {
         opts.addArguments("--no-sandbox");
         opts.addArguments("--disable-dev-shm-usage");
-        //opts.addArguments("--headless");
+        opts.addArguments("--headless");
         driver = new webdriver.Builder()
         .forBrowser('chrome').setChromeOptions(opts)
         .build();
