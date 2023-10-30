@@ -2,7 +2,7 @@ const Core = require("../utils/core");
 const fs = require('fs');
 const path = require("path");
 const currentDirectory = __dirname;
-const updateFile = path.join(currentDirectory,"../../../../Liquid/liquid-docker/.env");
+const updateFile = path.join(currentDirectory,"../../liquid/quickstart/.env");
 
 class UpdateEnv {
 

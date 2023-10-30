@@ -4,7 +4,7 @@ const path = require("path");
 const currentDirectory = __dirname;
 const parentDirectory = path.join(
   currentDirectory,
-  "../../../../Liquid/liquid-docker"
+  "../../liquid/quickstart"
 );
 
 class Docker {
