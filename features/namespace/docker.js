@@ -2,50 +2,57 @@ const Core = require("../utils/core");
 const { exec } = require("child_process");
 const path = require("path");
 const currentDirectory = __dirname;
-const parentDirectory = path.join(currentDirectory, "../../../../Liquid/liquid-docker");
+const parentDirectory = path.join(
+  currentDirectory,
+  "../../../../Liquid/liquid-docker"
+);
 
 class Docker {
-  constructor() {
-    this.core = new Core();
-  }
-
-  async dockerStop() {
+  dockerStop() {
     // Define the shell command to stop all Docker containers
-    const stopContainersCommand =
-      "cd ${parentDirectory} && docker stop $(docker ps -aq)";
+    return new Promise((resolve, reject) => {
+      const stopContainersCommand =
+        "cd ${parentDirectory} && docker stop $(docker ps -aq)";
 
-    // Execute the shell command
-    exec(stopContainersCommand, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error stopping Docker containers: ${error.message}`);
-        return;
-      }
+      // Execute the shell command
+      exec(stopContainersCommand, (error, stdout, stderr) => {
+        if (error) {
+          console.error(`Error stopping Docker containers: ${error.message}`);
+          return;
+        }
 
-      if (stderr) {
-        console.error(`Error output: ${stderr}`);
-      }
+        if (stderr) {
+          reject();
+          console.error(`Error output: ${stderr}`);
+        }
 
-      console.log(`Stopped Docker containers:\n${stdout}`);
+        console.log(`Stopped Docker containers:\n${stdout}`);
+        resolve();
+      });
     });
   }
 
-  async dockerStart() {
+  dockerStart() {
     // Define the shell command to stop all Docker containers
-    const stopContainersCommand =
-      "cd ${parentDirectory} && docker compose up -d";
+    return new Promise((resolve, reject) => {
+      const startContainersCommand =
+        "cd ${parentDirectory} && docker start $(docker ps -aq)";
 
-    // Execute the shell command
-    exec(stopContainersCommand, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error starting Docker containers: ${error.message}`);
-        return;
-      }
+      // Execute the shell command
+      exec(startContainersCommand, (error, stdout, stderr) => {
+        if (error) {
+          console.error(`Error stopping Docker containers: ${error.message}`);
+          return;
+        }
 
-      if (stderr) {
-        console.error(`Error output: ${stderr}`);
-      }
+        if (stderr) {
+          reject();
+          console.error(`Error output: ${stderr}`);
+        }
 
-      console.log(`Started Docker containers:\n${stdout}`);
+        console.log(`Started Docker containers:\n${stdout}`);
+        resolve();
+      });
     });
   }
 }

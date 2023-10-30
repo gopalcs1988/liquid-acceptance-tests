@@ -36,5 +36,9 @@ class Register {
     async clickCreateAccountButton() {
         await this.core.click(TargetType.xpath, "//input[@value='Create Account']")
     }
+
+    async checkErrorMessage(errorMessage) {
+        await this.core.checkElementVisible(TargetType.xpath, `//input[@value='${errorMessage}']`)
+    }
 }
 module.exports = Register

@@ -33,3 +33,7 @@ Then("Enters the {string} in password field on the registartion page", async fun
 Then("Clicks the create account button", async function() {
     await base.register.clickCreateAccountButton()
 });
+
+Then("Checks that {string} error message is displayed", async function (errorMessage) {
+    await base.register.checkErrorMessage(errorMessage)
+});

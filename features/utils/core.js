@@ -1,11 +1,10 @@
 const { TargetType } = require("../utils/enum");
 const webdriver = require("selenium-webdriver");
-// var { setDefaultTimeout } = require("@cucumber/cucumber");
-// setDefaultTimeout(60 * 1000);
 const DEFAULT_TIMEOUT = 15000
 
 class Core {
 
+  
   async setLocator(targetType, target) {
     let by;
     switch (targetType) {
@@ -86,5 +85,19 @@ class Core {
       throw error
     }
   }
+
+//  sleep = async (duration) => {
+//   console.log("Duration", duration)
+//   await new Promise(resolve => setTimeout(resolve, duration * 1000));
+//  }
+
+  async sleep(s) {
+    try{
+      await driver.sleep(s * 1000)
+     } catch (e) {
+      console.error(e)
+    }
+  }
+
 }
 module.exports = Core;

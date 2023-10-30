@@ -3,6 +3,8 @@ const { initDriver } = require("../utils/driverUtil");
 var reporter = require('cucumber-html-reporter');
 const fs = require("fs");
 const path = require("path");
+var { setDefaultTimeout } = require("@cucumber/cucumber");
+setDefaultTimeout(60 * 1000);
 let driver;
 const directory = path.join(__dirname, "../screenshots/");
 
@@ -23,9 +25,7 @@ After(async function (scenario) {
   var world = this
   try {
     if (driver) {
-      console.log("After")
       if (scenario.result.status === Status.FAILED) {
-        console.log("Snapshot")
         return driver.takeScreenshot().then((png) => {
           // screenShot is a base-64 encoded PNG
           world.attach(png, 'image/png');
