@@ -40,5 +40,9 @@ class Register {
     async checkErrorMessage(errorMessage) {
         await this.core.checkElementVisible(TargetType.xpath, `//input[@value='${errorMessage}']`)
     }
+
+    async checkRedirectToLoginPage() {
+        await this.core.checkElementVisible(TargetType.xpath, `//h3[contains(text(),'Login to')]`)
+    }
 }
 module.exports = Register

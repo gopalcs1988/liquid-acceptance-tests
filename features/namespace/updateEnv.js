@@ -1,12 +1,13 @@
 const Core = require("../utils/core");
+const { exec } = require("child_process");
 const fs = require('fs');
 const path = require("path");
 const currentDirectory = __dirname;
 const updateFile = path.join(currentDirectory,"../../liquid/quickstart/.env");
+const parentDirectory = path.join(currentDirectory,"../../liquid/scripts");
 
 class UpdateEnv {
-
-
+  
   async updateEnvVariable(key, value) {
     const envContent = fs.readFileSync(updateFile, "utf8");
 
@@ -29,6 +30,29 @@ class UpdateEnv {
     fs.writeFileSync(updateFile, updatedEnvContent);
 
     console.log(`Updated ${key} to ${value}`);
+  }
+
+  updateClient() {
+    return new Promise((resolve, reject) => {
+      const updateRedirectURI =
+        "cd ${parentDirectory} && node create-application-client.js mongodbConenctionString=mongodb://localhost:27017/liquid clientSecret=Liquid redirectUrls=http://localhost:2000/health";
+
+      // Execute the shell command
+      exec(updateRedirectURI, (error, stdout, stderr) => {
+        if (error) {
+          console.error(`Error updating the value on DB: ${error.message}`);
+          return;
+        }
+
+        if (stderr) {
+          reject();
+          console.error(`Error output: ${stderr}`);
+        }
+
+        console.log(`Updated the redirectURI on DB:\n${stdout}`);
+        resolve();
+      });
+    });
   }
 }
 module.exports = UpdateEnv;

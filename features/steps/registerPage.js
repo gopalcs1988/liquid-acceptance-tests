@@ -37,3 +37,7 @@ Then("Clicks the create account button", async function() {
 Then("Checks that {string} error message is displayed", async function (errorMessage) {
     await base.register.checkErrorMessage(errorMessage)
 });
+
+Then("Checks that user redirected to login page", async function() {
+    await base.register.checkRedirectToLoginPage()
+});

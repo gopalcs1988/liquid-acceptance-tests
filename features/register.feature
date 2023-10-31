@@ -12,6 +12,7 @@ Scenario Outline: User registartion
     And Enters the "<Email>" in email field on the registartion page
     And Enters the "<Password>" in password field on the registartion page
     Then Clicks the create account button
+    And Checks that user redirected to login page
 
     Examples:
         | Username | FirstName | LastName | Email | Password |
@@ -30,9 +31,10 @@ Scenario: Check that user is able to login with the above created user account
 Scenario: Check that user is unable to create an account which doesn't present under email domains
     Given Stop all the running docker containers
     Then Update the environment variable "USER_ACCOUNT_CREATION_ALLOW_ONLY_WHITELISTED_EMAIL_DOMAINS" with value "true"
-    Then Update the environment variable "USER_ACCOUNT_CREATION_WHITELITED_EMAIL_DOMAINS" with value "google,outlook"
+    Then Update the environment variable "USER_ACCOUNT_CREATION_WHITELITED_EMAIL_DOMAINS" with value "gmail.com,outlook"
     Then Start all the docker containers
     Then User wait for 10 seconds
+    #Then Update the redirectURI value on DB
     Given Access the login page with the URL of "http://localhost:2000"
     And Checks that user is able to access the login page
     When User clicks on create account link

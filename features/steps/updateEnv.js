@@ -5,3 +5,7 @@ const base =  new (require("../namespace/base"));
    await base.updateEnv.updateEnvVariable(variable, value);
  });
 
+ Then('Update the redirectURI value on DB', async function() {
+   await base.updateEnv.updateClient();
+ });
+
