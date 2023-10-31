@@ -49,4 +49,4 @@ Scenario: Check that user is unable to create an account which doesn't present u
 
     Examples:
         | Username | FirstName | LastName | Email | Password |
-        | rajagopal  | raja  | gopal | rajagopal1988@hotmail.com | password |
+        | rajagopal1988  | test  | account | rajagopal@hotmail.com | password |
