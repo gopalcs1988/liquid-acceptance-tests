@@ -50,3 +50,26 @@ Scenario: Check that user is unable to create an account which doesn't present u
     Examples:
         | Username | FirstName | LastName | Email | Password |
         | rajagopal1988  | test  | account | rajagopal@hotmail.com | password |
+
+Scenario: Check that user is able to view the error message as invalid phone number, when phone number field is blank
+    Given Stop all the running docker containers
+    Then Update the environment variable "CAN_USE_PHONE_NUMBER" with value "true"
+    Then Start all the docker containers
+    Then User wait for 10 seconds
+    Then Update the redirectURI value on DB
+    Given Access the login page with the URL of "http://localhost:2000"
+    And Checks that user is able to access the login page
+    When User clicks on create account link
+    And Checks that user is landed on the "Sign up" page
+    Then Enters the "<Username>" in username field on the registartion page
+    And Enters the "<FirstName>" in firstname field on the registartion page
+    And Enters the "<LastName>" in lastname field on the registartion page
+    And Enters the "<Email>" in email field on the registartion page
+    And Enters the "<Password>" in password field on the registartion page
+    Then Clicks the create account button
+    Then Checks that "Invalid PhoneCountryCode" error message is displayed
+
+    Examples:
+        | Username | FirstName | LastName | Email | Password |
+        | rajagopal_test1  | test  | noPhoneNumber | rajagopal_3@gmail.com | password |
+
