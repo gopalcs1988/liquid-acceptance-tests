@@ -34,7 +34,7 @@ Scenario: Check that user is unable to create an account which doesn't present u
     Then Update the environment variable "USER_ACCOUNT_CREATION_WHITELITED_EMAIL_DOMAINS" with value "gmail.com,outlook"
     Then Start all the docker containers
     Then User wait for 10 seconds
-    #Then Update the redirectURI value on DB
+    Then Update the redirectURI value on DB
     Given Access the login page with the URL of "http://localhost:2000"
     And Checks that user is able to access the login page
     When User clicks on create account link

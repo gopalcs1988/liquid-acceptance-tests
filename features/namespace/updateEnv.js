@@ -35,18 +35,14 @@ class UpdateEnv {
   updateClient() {
     return new Promise((resolve, reject) => {
       const updateRedirectURI =
-        "cd ${parentDirectory} && node create-application-client.js mongodbConenctionString=mongodb://localhost:27017/liquid clientSecret=Liquid redirectUrls=http://localhost:2000/health";
+        `node ${parentDirectory}/create-application-client.js mongodbConenctionString=mongodb://localhost:27017/liquid clientSecret=Liquid redirectUrls=http://localhost:2000/health`;
 
       // Execute the shell command
       exec(updateRedirectURI, (error, stdout, stderr) => {
         if (error) {
+          reject(error);
           console.error(`Error updating the value on DB: ${error.message}`);
           return;
-        }
-
-        if (stderr) {
-          reject();
-          console.error(`Error output: ${stderr}`);
         }
 
         console.log(`Updated the redirectURI on DB:\n${stdout}`);
