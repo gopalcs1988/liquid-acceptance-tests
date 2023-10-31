@@ -44,5 +44,11 @@ class Register {
     async checkRedirectToLoginPage() {
         await this.core.checkElementVisible(TargetType.xpath, `//h3[contains(text(),'Login to')]`)
     }
+
+    async enterPhoneNumber(countryCode, phoneNumber) {
+        await this.core.click(TargetType.xpath, `//select[@id='phoneCountryCode']`)
+        await this.core.click(TargetType.xpath, `//select[@id='phoneCountryCode']//option[@value='${countryCode}']`)
+        await this.core.typeValue(TargetType.xpath, "//input[@id='phone']", phoneNumber)
+    }
 }
 module.exports = Register

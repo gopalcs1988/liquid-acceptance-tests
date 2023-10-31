@@ -41,3 +41,7 @@ Then("Checks that {string} error message is displayed", async function (errorMes
 Then("Checks that user redirected to login page", async function() {
     await base.register.checkRedirectToLoginPage()
 });
+
+Then("Enters the country code {string} and phone number {string} in phone number field on the registration page", async function (countryCode, phoneNumber) {
+    await base.register.enterPhoneNumber(countryCode, phoneNumber)
+});
