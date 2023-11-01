@@ -136,3 +136,29 @@ Scenario: Check that user is unable to create an account for 1 min
         | Username | FirstName | LastName | Email | CountryCode | PhoneNumber | Password |
         | rajagopal_test6  | test  | withPhoneNumber | rajagopal_5@gmail.com | +91 | 9600338223 | password |
 
+Scenario: Check that error message is thrown when the password doesn't match the REGEX format
+    Given Stop all the running docker containers
+    Then Update the environment variable "USER_PROFILE_PASSWORD_VALIDATION_REGEX" with value "'^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$'"
+    Then Start all the docker containers
+    Then User wait for 10 seconds
+    Then Update the redirectURI value on DB
+    Given Access the login page with the URL of "http://localhost:2000"
+    And Checks that user is able to access the login page
+    When User clicks on create account link
+    And Checks that user is landed on the "Sign up" page
+    Then Enters the "<Username>" in username field on the registartion page
+    And Enters the "<FirstName>" in firstname field on the registartion page
+    And Enters the "<LastName>" in lastname field on the registartion page
+    And Enters the "<Email>" in email field on the registartion page
+    And Enters the country code "<CountryCode>" and phone number "<PhoneNumber>" in phone number field on the registration page
+    And Enters the "<Password>" in password field on the registartion page
+    Then Clicks the create account button
+    Then Checks that "Invalid Password" error message is displayed
+    And Enters the "<Password1>" in password field on the registartion page
+    Then Clicks the create account button
+    And Checks that user redirected to login page
+
+    Examples:
+        | Username | FirstName | LastName | Email | CountryCode | PhoneNumber | Password | Password1 |
+        | rajagopal_test6  | test  | withPhoneNumber | rajagopal_5@gmail.com | +91 | 9600338223 | password | Password@1 |
+
