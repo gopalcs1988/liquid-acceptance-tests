@@ -9,5 +9,9 @@ class Utils {
   async wait(int) {
     await this.core.sleep(int)
   }
+
+  async getBrowserLogs() {
+    await this.core.getBrowserConsoleLogs()
+  }
 }
 module.exports = Utils

@@ -1,7 +1,10 @@
 const webdriver = require('selenium-webdriver');
 let chrome = require('selenium-webdriver/chrome');
+const { Capabilities, Capability } = require('selenium-webdriver/lib/capabilities');
 
 let opts = new chrome.Options();
+const capabilities = Capabilities.chrome();
+capabilities.set(Capability.LOGGING_PREFS, { browser: 'ALL' });
 
 
 exports.initDriver = async () => {
@@ -9,7 +12,9 @@ exports.initDriver = async () => {
         opts.addArguments("--disable-dev-shm-usage");
         opts.addArguments("--headless");
         driver = new webdriver.Builder()
-        .forBrowser('chrome').setChromeOptions(opts)
+        .withCapabilities(capabilities)
+        .forBrowser('chrome')
+        .setChromeOptions(opts)
         .build();
 
         // Maximize the browser window

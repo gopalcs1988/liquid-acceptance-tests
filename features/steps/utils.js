@@ -3,4 +3,8 @@ const base =  new (require("../namespace/base"));
 
 Then('User wait for {int} seconds', async function(int) {
     await base.utils.wait(int)
-  })
+  });
+
+Then('Get the browser logs', async function() {
+    await base.utils.getBrowserLogs()
+});

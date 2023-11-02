@@ -2,6 +2,14 @@
 Feature: Check the user registration flow
 
 Scenario Outline: User registartion
+    Given Stop all the running docker containers
+    Then Update the environment variable "SYSTEM_RATE_LIMIT_LIGHT_API_MAX_LIMIT" with value "99999"
+    Then Update the environment variable "SYSTEM_RATE_LIMIT_MEDIUM_API_MAX_LIMIT" with value "99999"
+    Then Update the environment variable "SYSTEM_RATE_LIMIT_HEAVY_API_MAX_LIMIT" with value "99999"
+    Then Update the environment variable "SYSTEM_RATE_LIMIT_EXTREME_API_MAX_LIMIT" with value "99999"
+    Then Start all the docker containers
+    Then User wait for 10 seconds
+    Then Update the redirectURI value on DB
     Given Access the login page with the URL of "http://localhost:2000"
     And Checks that user is able to access the login page
     When User clicks on create account link
@@ -13,7 +21,7 @@ Scenario Outline: User registartion
     And Enters the "<Password>" in password field on the registartion page
     Then Clicks the create account button
     And Checks that user redirected to login page
-
+    
     Examples:
         | Username | FirstName | LastName | Email | Password |
         | rajagopal_test1  | raja  | gopal | rajagopal1988@gmail.com | password |
@@ -154,6 +162,7 @@ Scenario: Check that error message is thrown when the password doesn't match the
     And Enters the "<Password>" in password field on the registartion page
     Then Clicks the create account button
     Then Checks that "Invalid Password" error message is displayed
+    Then User wait for 10 seconds  
     And Enters the "<Password1>" in password field on the registartion page
     Then Clicks the create account button
     And Checks that user redirected to login page

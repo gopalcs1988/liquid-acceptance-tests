@@ -99,5 +99,17 @@ class Core {
     }
   }
 
+  async getBrowserConsoleLogs () {
+    try {
+    const logs = await driver.manage().logs().get('browser');
+  //   logs.forEach((log) => {
+  //    console.log(`${log.level.value} - ${log.message}`);
+  // });
+    const browserLogs = logs.map((log) => `${log.level.value} - ${log.message}`);
+    console.log(browserLogs)
+  } catch (e) {
+    console.error(e)
+  }
+  }
 }
 module.exports = Core;
