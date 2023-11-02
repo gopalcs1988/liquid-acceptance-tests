@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@cucumber/cucumber": "^9.5.1",
-    "chromedriver": "^119.0.0",
+    "chromedriver": "^118.0.1",
     "cucumber-html-reporter": "^7.1.1",
     "fs": "^0.0.1-security",
     "logging": "^3.3.0",
