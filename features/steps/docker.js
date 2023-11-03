@@ -8,3 +8,7 @@ const base =  new (require("../namespace/base"));
  Given('Start all the docker containers', async function () {
     await base.docker.dockerStart();
  });
+
+ Then('Get {string} docker container logs', async function (containerName) {
+  await base.docker.getDockerLogs(containerName);
+});

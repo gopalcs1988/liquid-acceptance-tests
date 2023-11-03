@@ -47,5 +47,26 @@ class Docker {
       });
     });
   }
+
+  getDockerLogs(containerName) 
+  {
+    // Define the shell command to stop all Docker containers
+    return new Promise((resolve, reject) => {
+      const stopContainersCommand =
+      `docker logs ${containerName} > ${containerName}.txt`;
+      
+      // Execute the shell command
+      exec(stopContainersCommand, (error, stdout, stderr) => {
+        if (error) {
+          reject(error);
+          console.error(`Failed to export the liquid container logs: ${error.message}`);
+          return;
+        }
+
+        console.log(`Successfully exported the liquid container logs\n${stdout}`);
+        resolve();
+      });
+    });
+  } 
 }
 module.exports = Docker;

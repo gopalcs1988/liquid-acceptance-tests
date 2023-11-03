@@ -144,9 +144,75 @@ Scenario: Check that user is unable to create an account for 1 min
         | Username | FirstName | LastName | Email | CountryCode | PhoneNumber | Password |
         | rajagopal_test6  | test  | withPhoneNumber | rajagopal_5@gmail.com | +91 | 9600338223 | password |
 
+Scenario: Check that able to create an account after entering the email verification code
+    Given Stop all the running docker containers
+    Then Update the environment variable "USER_ACCOUNT_CREATION_REQUIRE_EMAIL_VERIFICATION" with value "true"
+    Then Start all the docker containers
+    Then User wait for 10 seconds
+    Then Update the redirectURI value on DB
+    Given Access the login page with the URL of "http://localhost:2000"
+    And Checks that user is able to access the login page
+    When User clicks on create account link
+    And Checks that user is landed on the "Sign up" page
+    Then Enters the "<Username>" in username field on the registartion page
+    And Enters the "<FirstName>" in firstname field on the registartion page
+    And Enters the "<LastName>" in lastname field on the registartion page
+    And Enters the "<Email>" in email field on the registartion page
+    And Enters the country code "<CountryCode>" and phone number "<PhoneNumber>" in phone number field on the registration page
+    And Enters the "<Password>" in password field on the registartion page
+    Then Clicks the create account button
+    And Checks that user redirected to verify account page
+    Then Get "liquid" docker container logs
+    Then Get the verification code from the "liquid" docker container logs and place the value on the verify account page
+    And Clicks the verify account button
+    And Checks that user redirected to login page
+
+    Examples:
+        | Username | FirstName | LastName | Email | CountryCode | PhoneNumber | Password | 
+        | rajagopal_test7  | test  | withPhoneNumber | rajagopal_6@gmail.com | +91 | 9600338223 | Password@1 | 
+
+Scenario: Check that able to create an account after entering the email verification code
+    Given Stop all the running docker containers
+    Then Update the environment variable "USER_ACCOUNT_CREATION_REQUIRE_EMAIL_VERIFICATION" with value "false"
+    Then Update the environment variable "CAN_RESET_PASSWORD" with value "true"
+    Then Start all the docker containers
+    Then User wait for 10 seconds
+    Then Update the redirectURI value on DB
+    Given Access the login page with the URL of "http://localhost:2000"
+    And Checks that user is able to access the login page
+    When User clicks on create account link
+    And Checks that user is landed on the "Sign up" page
+    Then Enters the "<Username>" in username field on the registartion page
+    And Enters the "<FirstName>" in firstname field on the registartion page
+    And Enters the "<LastName>" in lastname field on the registartion page
+    And Enters the "<Email>" in email field on the registartion page
+    And Enters the country code "<CountryCode>" and phone number "<PhoneNumber>" in phone number field on the registration page
+    And Enters the "<Password>" in password field on the registartion page
+    Then Clicks the create account button
+    And Checks that user redirected to login page
+    And Clicks the forgot password link
+    And Checks that user redirected to verify your identity page
+    And Enters the "<Email>" email id on the forgot password page
+    Then User wait for 5 seconds
+    Then Get "liquid" docker container logs
+    Then Get the verification code from the "liquid" docker container logs and place the value on the verify account page
+    And Enters the "<Password1>" in password field on the reset password page
+    And Clicks the change password button
+    And Checks that user redirected to login page
+    When Enter the username as "<Username>"
+    And Enter the password as "<Password1>"
+    And Click on the login button
+    #Then Check that the consent page is displayed
+    #And Click on the consent button
+    Then Check that agent is able to view the status as "UP" on the redirect page
+
+    Examples:
+        | Username | FirstName | LastName | Email | CountryCode | PhoneNumber | Password | Password1 |
+        | rajagopal_test8  | test  | withPhoneNumber | rajagopal_7@gmail.com | +91 | 9600338223 | Password@1 | Password@2 |
+
 Scenario: Check that error message is thrown when the password doesn't match the REGEX format
     Given Stop all the running docker containers
-    Then Update the environment variable "USER_PROFILE_PASSWORD_VALIDATION_REGEX" with value "'^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$'"
+    Then Update the environment variable "USER_PROFILE_PASSWORD_VALIDATION_REGEX" with value "\"^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$\""
     Then Start all the docker containers
     Then User wait for 10 seconds
     Then Update the redirectURI value on DB
@@ -169,5 +235,4 @@ Scenario: Check that error message is thrown when the password doesn't match the
 
     Examples:
         | Username | FirstName | LastName | Email | CountryCode | PhoneNumber | Password | Password1 |
-        | rajagopal_test6  | test  | withPhoneNumber | rajagopal_5@gmail.com | +91 | 9600338223 | password | Password@1 |
-
+        | rajagopal_test9  | test  | withPhoneNumber | rajagopal_8@gmail.com | +91 | 9600338223 | password | Password@1 |

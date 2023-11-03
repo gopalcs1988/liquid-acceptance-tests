@@ -45,3 +45,31 @@ Then("Checks that user redirected to login page", async function() {
 Then("Enters the country code {string} and phone number {string} in phone number field on the registration page", async function (countryCode, phoneNumber) {
     await base.register.enterPhoneNumber(countryCode, phoneNumber)
 });
+
+Then("Checks that user redirected to verify account page", async function() {
+    await base.register.enterVerifyCodePage()
+});
+
+Then("Clicks the verify account button", async function() {
+    await base.register.clickVerifyButton()
+});
+
+Then("Clicks the forgot password link", async function() {
+    await base.register.clickForgotPasswordLink()
+});
+
+Then("Enters the {string} email id on the forgot password page", async function(emailID) {
+    await base.register.enterEmailOnThePasswordResetPage(emailID)
+});
+
+Then("Enters the {string} in password field on the reset password page", async function (username) {
+    await base.register.enterPasswordOnTheResetPage(username)
+});
+
+Then("Clicks the change password button", async function () {
+    await base.register.clickChangePassword()
+});
+
+Then("Checks that user redirected to verify your identity page", async function() {
+    await base.register.verifyIdentityPage()
+});

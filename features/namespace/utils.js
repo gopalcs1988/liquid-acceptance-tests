@@ -13,5 +13,10 @@ class Utils {
   async getBrowserLogs() {
     await this.core.getBrowserConsoleLogs()
   }
+
+  async getVerificationCode(containerName) {
+    let verifyCode = await this.core.getVerificationCodeFromLogs(containerName);
+    await this.core.typeValue(TargetType.xpath, `//input[@id='code']`, verifyCode)
+  }
 }
 module.exports = Utils
