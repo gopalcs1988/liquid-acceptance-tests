@@ -73,3 +73,8 @@ Then("Clicks the change password button", async function () {
 Then("Checks that user redirected to verify your identity page", async function() {
     await base.register.verifyIdentityPage()
 });
+
+Then("Enters the inviteCode on the registartion page", async function () {
+    let inviteCode = await base.utils.getInviteCode()
+    await base.register.enterInviteCode(inviteCode)
+});

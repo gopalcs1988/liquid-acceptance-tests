@@ -22,3 +22,7 @@ When('Enter the password as {string}', async function (string) {
 When('Click on the login button', async function () {
   await base.login.clickLoginButton()
 });
+
+When('Get the code value from the current URL', async function () {
+  await base.login.getCodeValueFromURL()
+});

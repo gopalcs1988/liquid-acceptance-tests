@@ -2,11 +2,11 @@ const { TargetType } = require("../utils/enum");
 const webdriver = require("selenium-webdriver");
 const path = require("path");
 const fs = require("fs");
+const axios = require("axios");
 const DEFAULT_TIMEOUT = 15000;
 const currentDirectory = __dirname;
 
 class Core {
-  
   async setLocator(targetType, target) {
     let by;
     switch (targetType) {
@@ -91,10 +91,13 @@ class Core {
     }
   }
 
-  //  sleep = async (duration) => {
-  //   console.log("Duration", duration)
-  //   await new Promise(resolve => setTimeout(resolve, duration * 1000));
-  //  }
+  async getCurrentURL() {
+    try {
+      return (this.value = await driver.getCurrentUrl());
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   async sleep(s) {
     try {
@@ -136,9 +139,61 @@ class Core {
       // Output the matched values
       console.log("Matches found:");
       console.log(matches[1]);
-      return this.emailVerificationCode = matches[1];
+      return (this.emailVerificationCode = matches[1]);
     } else {
       console.log("No matches found.");
+    }
+  }
+
+  async getCodeValue(url) {
+    const regex = /[?&]code=([^&]+)/;
+    const match = url.match(regex);
+
+    if (match) {
+      const codeValue = match[1];
+      return codeValue;
+    } else {
+      console.log("Code value not found on the URL");
+    }
+  }
+
+  async generateBearerTokenValue(code) {
+    const apiUrl = "http://localhost:2000/oauth/token";
+    const data = {
+      grant_type: "authorization_code",
+      client_id: "application_client",
+      redirect_uri: "http://localhost:2000/health",
+      code: code,
+      scope: "delegated:all",
+    };
+    const response = await axios.post(apiUrl, new URLSearchParams(data), {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+    return response.data;
+  }
+
+  async getInviteCode(token) {
+    const apiUrl = "http://localhost:2000/user/invite-codes";
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await axios.get(apiUrl, { headers });
+    return response.data.data.inviteCodes[0].code;
+  }
+
+  async getBearerTokenValue(test1) {
+    const test = JSON.stringify(test1);
+    const regex1 = /"access_token":"([0-9a-z]+)"/;
+    const match1 = test.match(regex1);
+
+    if (match1) {
+      const accessToken = match1[1];
+      return accessToken;
+    } else {
+      console.log("Access token not found");
+      return null; // You might want to return a default value or handle this case differently.
     }
   }
 }

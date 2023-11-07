@@ -28,6 +28,25 @@ class Docker {
     });
   }
 
+  dockerStopContainer(containerName) {
+    return new Promise((resolve, reject) => {
+      const stopContainersCommand =
+      `docker-compose -f ${parentDirectory}/docker-compose.yaml down ${containerName}`;
+      
+      // Execute the shell command
+      exec(stopContainersCommand, (error, stdout, stderr) => {
+        if (error) {
+          reject(error);
+          console.error(`Error stopping Docker containers: ${error.message}`);
+          return;
+        }
+
+        console.log(`Stopped Docker container:\n${stdout}`);
+        resolve();
+      });
+    });
+  }
+
   dockerStart() {
     // Define the shell command to stop all Docker containers
     return new Promise((resolve, reject) => {
@@ -43,6 +62,25 @@ class Docker {
         }
         
         console.log(`Started Docker containers:\n${stdout}`);
+        resolve();
+      });
+    });
+  }
+
+  dockerStartContainer(containerName) {
+    // Define the shell command to stop all Docker containers
+    return new Promise((resolve, reject) => {
+      const startContainersCommand =
+      `docker-compose -f ${parentDirectory}/docker-compose.yaml up -d ${containerName}`;
+
+      // Execute the shell command
+      exec(startContainersCommand, (error, stdout, stderr) => {
+        if (error) {
+          reject(error);
+          console.error(`Error stopping Docker containers: ${error.message}`);
+          return;
+        }
+        console.log(`Started Docker container ${containerName}:\n${stdout}`);
         resolve();
       });
     });

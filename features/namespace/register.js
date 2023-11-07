@@ -79,5 +79,9 @@ class Register {
     async verifyIdentityPage() {
         await this.core.checkElementVisible(TargetType.xpath, `//input[@id='email']`)
     }
+    
+    async enterInviteCode(inviteCode) {
+        await this.core.typeValue(TargetType.xpath, "//input[@id='inviteCode']", inviteCode)
+    }
 }
 module.exports = Register

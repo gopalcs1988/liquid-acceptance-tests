@@ -18,5 +18,14 @@ class Utils {
     let verifyCode = await this.core.getVerificationCodeFromLogs(containerName);
     await this.core.typeValue(TargetType.xpath, `//input[@id='code']`, verifyCode)
   }
+
+  async getInviteCode() {
+    //let url = await this.core.getCurrentURL()
+    //let code = await this.core.getCodeValue(url)
+    let bearerToken = await this.core.generateBearerTokenValue(global.code)
+    let accessToken = await this.core.getBearerTokenValue(bearerToken)
+    let inviteCode = await this.core.getInviteCode(accessToken)
+    return inviteCode
+  }
 }
 module.exports = Utils

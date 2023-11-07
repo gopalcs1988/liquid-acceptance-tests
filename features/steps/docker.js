@@ -11,4 +11,12 @@ const base =  new (require("../namespace/base"));
 
  Then('Get {string} docker container logs', async function (containerName) {
   await base.docker.getDockerLogs(containerName);
-});
+ });
+
+ Then('Stop the {string} container', async function (containerName) {
+  await base.docker.dockerStopContainer(containerName)
+ });
+
+ Then('Start the {string} container', async function (containerName) {
+  await base.docker.dockerStartContainer(containerName)
+ });

@@ -28,5 +28,10 @@ class Login {
     async clickLoginButton() {
         await this.core.click(TargetType.xpath, "//input[@class='button' and @value='Login']")
     }
+
+    async getCodeValueFromURL() {
+        let url = await this.core.getCurrentURL()
+        global.code = await this.core.getCodeValue(url)
+    }
 }
 module.exports = Login
