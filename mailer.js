@@ -1,6 +1,9 @@
 const nodemailer = require('nodemailer');
 const path1 = require("path");
 const dotenv = require('dotenv')
+const fs = require('fs');
+const currentDirectory = __dirname;
+const updateFile = path1.join(currentDirectory,"/features/reports/cucumber_report.html");
 dotenv.config();
 
 async function mailer() {
@@ -16,13 +19,15 @@ async function mailer() {
       }
     });
 
+    //const htmlReportContent = fs.readFileSync(updateFile, 'utf8');
     // Message configuration
     const message = {
       from: process.env.MAIL_USERNAME,
-      to: process.env.MAIL_USERNAME,
+      to: [ process.env.MAIL_USERNAME, "shrihariprakash@gmail.com"],
       subject: 'Test Email from GitHub Actions',
       text: 'This is a test email sent from a GitHub Actions workflow using nodemailer.',
-      html: "<b> Test Email </b>", 
+      html: "<b> Test Email </b>",
+      //html: htmlReportContent,
       attachments: [
         {
         filename: 'cucumber_report.html',
