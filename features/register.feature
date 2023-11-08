@@ -147,6 +147,7 @@ Scenario: Check that user is unable to create an account for 1 min
 Scenario: Check that able to create an account after entering the email verification code
     Given Stop all the running docker containers
     Then Update the environment variable "USER_ACCOUNT_CREATION_REQUIRE_EMAIL_VERIFICATION" with value "true"
+    And Update the environment variable "USER_ACCOUNT_CREATION_ENABLE_IP_BASED_THROTTLE" with value "false"
     Then Start all the docker containers
     Then User wait for 10 seconds
     Then Update the redirectURI value on DB
@@ -213,7 +214,6 @@ Scenario: Check that able to create an account after entering the email verifica
 Scenario: Check that user is able to create an account with invite code
     Given Stop all the running docker containers
     Then Update the environment variable "USER_ACCOUNT_CREATION_FORCE_GENERATE_INVITE_CODES" with value "true"
-    And Update the environment variable "USER_ACCOUNT_CREATION_ENABLE_IP_BASED_THROTTLE" with value "false"
     Then Start all the docker containers
     Then User wait for 10 seconds
     Then Update the redirectURI value on DB
