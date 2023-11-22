@@ -11,6 +11,7 @@
   "dependencies": {
     "@cucumber/cucumber": "^9.5.1",
     "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
     "chromedriver": "^119.0.1",
     "cucumber-html-reporter": "^7.1.1",
     "fs": "^0.0.1-security",

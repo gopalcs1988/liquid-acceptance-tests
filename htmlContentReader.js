@@ -1,19 +1,4 @@
-// htmlContentReader.js
-
-const fs = require('fs');
-const path = require('path');
 const cheerio = require('cheerio');
-
-function readHTMLFile(filePath, callback) {
-    fs.readFile(filePath, 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error reading file:', err);
-            callback(err, null);
-            return;
-        }
-        callback(null, data);
-    });
-}
 
 function extractValuesFromHTML(htmlContent) {
     const $ = cheerio.load(htmlContent);
@@ -31,7 +16,4 @@ function extractValuesFromHTML(htmlContent) {
     return extractedValues;
 }
 
-module.exports = {
-    readHTMLFile,
-    extractValuesFromHTML,
-};
+module.exports = { extractValuesFromHTML };

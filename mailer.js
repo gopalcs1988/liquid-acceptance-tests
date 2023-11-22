@@ -4,14 +4,8 @@ const dotenv = require("dotenv");
 const fs = require("fs");
 const util = require("util");
 const currentDirectory = __dirname;
-const updateFile = path1.join(
-  currentDirectory,
-  "/features/reports/cucumber_report.html"
-);
-const {
-  readHTMLFile,
-  extractValuesFromHTML,
-} = require("./htmlContentReader.js");
+const updateFile = path1.join(currentDirectory,"/features/reports/cucumber_report.html");
+const {extractValuesFromHTML} = require("./htmlContentReader.js");
 dotenv.config();
 
 async function mailer() {
