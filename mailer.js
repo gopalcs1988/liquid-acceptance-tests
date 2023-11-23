@@ -14,56 +14,13 @@ async function mailer() {
     // Read HTML file and extract values
     const htmlContent = await readFile(updateFile, "utf8");
     const extractedValues = extractValuesFromHTML(htmlContent);
-    const emailBody = `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            body {
-                font-family: 'Arial', sans-serif;
-                margin: 20px;
-            }
-
-            h1 {
-                color: #333;
-            }
-
-            p {
-                color: #555;
-            }
-
-            ul {
-                list-style-type: none;
-                padding: 0;
-            }
-
-            li {
-                margin-bottom: 10px;
-            }
-
-            li strong {
-                color: #007BFF;
-            }
-        </style>
-        <title>Liquid Test Report</title>
-    </head>
-    <body>
-        <h1>Liquid Test Report</h1>
-        <p>Summary of Scenarios:</p>
-        
-        <ul>
-            <li>All Scenarios: <strong>${extractedValues.allScenarios}</strong></li>
-            <li>Passed Scenarios: <strong>${extractedValues.passedScenarios}</strong></li>
-            <li>Failed Scenarios: <strong>${extractedValues.failedScenarios}</strong></li>
-        </ul>
-
-        <p>Thank you!</p>
-    </body>
-    </html>
-`;
+    const templateFile = path1.join(__dirname, "./template.html");
+    const template = await fs.promises.readFile(templateFile, "utf8");
+    const html = template
+      .replaceAll("%extractedValues.allScenarios%", extractedValues.allScenarios)
+      .replaceAll("%extractedValues.passedScenarios%", extractedValues.passedScenarios)
+      .replaceAll("%extractedValues.failedScenarios%", extractedValues.failedScenarios)
+    
     // Create a transporter using SMTP transport
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -81,8 +38,7 @@ async function mailer() {
       to: [process.env.MAIL_USERNAME, "shrihariprakash@gmail.com"],
       subject: "Liquid Acceptance Test Report",
       text: "This is a test email sent from a GitHub Actions workflow using nodemailer.",
-      //html: "<b> Test Email </b>",
-      html: emailBody,
+      html,
       attachments: [
         {
           filename: "cucumber_report.html",

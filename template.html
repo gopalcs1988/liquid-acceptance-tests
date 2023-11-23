@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        p {
+            color: #555;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li strong {
+            color: #007BFF;
+        }
+    </style>
+    <title>Liquid Test Report</title>
+</head>
+<body>
+    <h1>Liquid Test Report</h1>
+    <p>Summary of Scenarios:</p>
+
+    <table>
+        <tr>
+            <th>Scenario Type</th>
+            <th>Results</th>
+        </tr>
+        <tr>
+            <td>All Scenarios</td>
+            <td style="background-color: #e6f7ff;">%extractedValues.allScenarios%</td>
+        </tr>
+        <tr>
+            <td>Passed Scenarios</td>
+            <td style="background-color: #b3ffb3;">%extractedValues.passedScenarios%</td>
+        </tr>
+        <tr>
+            <td>Failed Scenarios</td>
+            <td style="background-color: #ffb3b3;">%extractedValues.failedScenarios%</td>
+        </tr>
+    </table>
+
+    <p>Thank you!</p>
+</body>
+</html>
