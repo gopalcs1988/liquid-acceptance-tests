@@ -3,56 +3,58 @@ name: Acceptance Tests
 on:
   workflow_dispatch:
   #push:
-    #branches:
-     # - main
+  #branches:
+  # - main
 
 jobs:
   download-repo:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Download Liquid Repository
-      run: |
-        git clone https://github.com/shrihari-prakash/liquid.git
-        echo "Current Working Directory: $PWD"
-        ls -l
-        cd liquid/quickstart
-        docker compose pull
-        docker compose up -d
-        docker ps -a
-        cd ..
-    - name: Run Test
-      run: |
-        cd liquid
-        npm install
-        ls -l
-        node ./scripts/create-application-client.js mongodbConenctionString=mongodb://localhost:27017/liquid clientSecret=Liquid redirectUrls=http://localhost:2000/health
-        cd ..
-        npm install
-        npm test
-    - name: Send Email
-      run: |
-        touch .env
-        echo MAIL_USERNAME=${{ secrets.USERNAME }} >> .env
-        echo MAIL_PASSWORD=${{ secrets.PASSWORD }} >> .env
-        node ./mailer.js
-    - name: Output the result
-      uses: actions/upload-artifact@v3
-      with:
+      - name: Download Liquid Repository
+        run: |
+          git clone https://github.com/shrihari-prakash/liquid.git
+          echo "Current Working Directory: $PWD"
+          ls -l
+          cd liquid/quickstart
+          docker compose pull
+          docker compose up -d
+          docker ps -a
+          cd ..
+      - name: Run Test
+        run: |
+          cd liquid
+          npm install
+          ls -l
+          node ./scripts/create-application-client.js mongodbConenctionString=mongodb://localhost:27017/liquid clientSecret=Liquid redirectUrls=http://localhost:2000/health
+          cd ..
+          npm install
+          npm test
+      - name: Send Email
+        run: |
+          touch .env
+          echo MAIL_USERNAME=${{ secrets.USERNAME }} >> .env
+          echo MAIL_PASSWORD=${{ secrets.PASSWORD }} >> .env
+          node ./mailer.js
+      - name: Output the result
+        uses: actions/upload-artifact@v3
+        with:
           name: Reports
           path: ./features/reports
-    - name: Setup Pages
-      uses: actions/configure-pages@v2
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
-      with:
-        # Upload entire repository
-        path: ./features/reports
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v2
-      with:
-        token: ${{ secrets.TOKEN }}
-        
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload entire repository
+          path: ./features/reports
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        with:
+          token: ${{ secrets.TOKEN }}
+          permissions:
+          pages: write
+          id-token: write
