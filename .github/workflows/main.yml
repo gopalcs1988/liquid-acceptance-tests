@@ -53,8 +53,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-        with:
-          token: ${{ secrets.TOKEN }}
-          permissions:
-          pages: write
-          id-token: write
