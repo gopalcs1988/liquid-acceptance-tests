@@ -41,10 +41,10 @@ async function mailer() {
       html,
       attachments: [
         {
-          filename: "cucumber_report.html",
+          filename: "index.html",
           path: path1.join(
             __dirname,
-            "./features/reports/cucumber_report.html"
+            "./features/reports/index.html"
           ),
         },
         {
