@@ -23,12 +23,15 @@ Before(async function () {
 
 After(async function (scenario) {
   var world = this
+  const browserLogs = await driver.manage().logs().get('browser');
+  const logsText = browserLogs.map(entry => `${entry.level.name}: ${entry.message}`).join('\n');
   try {
     if (driver) {
       if (scenario.result.status === Status.FAILED) {
         return driver.takeScreenshot().then((png) => {
           // screenShot is a base-64 encoded PNG
           world.attach(png, 'image/png');
+          world.attach(logsText, 'text/plain', 'Browser Logs');
       });
       }
     await driver.quit();
