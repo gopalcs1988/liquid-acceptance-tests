@@ -54,6 +54,10 @@ Then("Clicks the verify account button", async function() {
     await base.register.clickVerifyButton()
 });
 
+Then("Clicks the submit account button", async function() {
+    await base.register.clickSubmitButton()
+});
+
 Then("Clicks the forgot password link", async function() {
     await base.register.clickForgotPasswordLink()
 });

@@ -56,11 +56,15 @@ class Register {
     }
 
     async enterVerifyCodePage() {
-        await this.core.checkElementVisible(TargetType.xpath, `//input[@id='code' and @placeholder='Your Verification Code']`)
+        await this.core.checkElementVisible(TargetType.xpath, `//input[@id='code' and @placeholder='Verification Code']`)
     }
 
     async clickVerifyButton() {
         await this.core.click(TargetType.xpath, `//input[@value='Verify']`)
+    }
+
+    async clickSubmitButton() {
+        await this.core.click(TargetType.xpath, `//input[@value='Submit']`)
     }
 
     async clickForgotPasswordLink() {
