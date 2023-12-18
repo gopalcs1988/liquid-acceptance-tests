@@ -3,6 +3,7 @@ Feature: Check the user registration flow
 
 Scenario Outline: User registartion
     Given Stop all the running docker containers
+    Then Update the environment variable "SYSTEM_DEMO_MODE" with value "99999"
     Then Update the environment variable "SYSTEM_RATE_LIMIT_LIGHT_API_MAX_LIMIT" with value "99999"
     Then Update the environment variable "SYSTEM_RATE_LIMIT_MEDIUM_API_MAX_LIMIT" with value "99999"
     Then Update the environment variable "SYSTEM_RATE_LIMIT_HEAVY_API_MAX_LIMIT" with value "99999"
