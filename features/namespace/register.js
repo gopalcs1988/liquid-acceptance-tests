@@ -10,7 +10,7 @@ class Register {
         await this.core.click(TargetType.xpath, "//span[@class='page-link']/a[text()='Create Account']")
     }
     async checkSignUpPageIsDispalyed(value) {
-        await this.core.checkElementVisible(TargetType.xpath, "//h3[contains(text(),'Sign up')]")
+        await this.core.checkElementVisible(TargetType.xpath, "//input[@value='Create Account']")
     }
     
     async enterUsernameOnTheRegistrationPage(username) {
