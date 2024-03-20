@@ -136,7 +136,7 @@ Scenario: Check that user is unable to create an account for 1 min
     And Enters the country code "<CountryCode>" and phone number "<PhoneNumber>" in phone number field on the registration page
     And Enters the "<Password>" in password field on the registartion page
     Then Clicks the create account button
-    Then Checks that "Account creation limited" error message is displayed
+    Then Checks that "Too Many Requests" error message is displayed
     Then User wait for 60 seconds
     Then Clicks the create account button
     And Checks that user redirected to login page

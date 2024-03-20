@@ -56,7 +56,7 @@ class Register {
     }
 
     async enterVerifyCodePage() {
-        await this.core.checkElementVisible(TargetType.xpath, `//input[@id='code' and @placeholder='Verification Code']`)
+        await this.core.checkElementVisible(TargetType.xpath, `//input[@id='code' and @aria-label='Verification Code']`)
     }
 
     async clickVerifyButton() {
