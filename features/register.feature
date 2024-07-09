@@ -71,7 +71,7 @@ Scenario: Check that user is unable to create an account which doesn't present u
     And Enters the "<Email>" in email field on the registartion page
     And Enters the "<Password>" in password field on the registartion page
     Then Clicks the create account button
-    Then Checks that "Bad email domain" error message is displayed
+    Then Checks that "Unsupported Email Provider" error message is displayed
 
     Examples:
         | Username | FirstName | LastName | Email | Password |
