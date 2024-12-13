@@ -12,7 +12,10 @@
     "@cucumber/cucumber": "^9.5.1",
     "axios": "^1.6.0",
     "cheerio": "^1.0.0-rc.12",
-    "chromedriver": "126.0.4",
+    "chromedriver": "131.0.3
+
+
+",
     "cucumber-html-reporter": "^7.1.1",
     "fs": "^0.0.1-security",
     "logging": "^3.3.0",
